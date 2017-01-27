@@ -1,0 +1,8 @@
+language: go
+go:
+  - 1.7
+install:
+  - go get -v github.com/Masterminds/glide
+  - make deps
+before_deploy:
+  - make release
