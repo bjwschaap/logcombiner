@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"regexp"
+	"time"
 
 	"github.com/oleiade/lane"
 )
@@ -22,6 +23,7 @@ type LogLine struct {
 var timeStampRegex = regexp.MustCompile(`^\[\d{4}-\d{1,2}-\d{1,2}.*\]`)
 
 func main() {
+	startTime := time.Now()
 	logFile, err := os.Open("./docker_log_json_stacktrace.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -52,6 +54,8 @@ func main() {
 		}
 		fmt.Println(string(newLogEvent))
 	}
+	executionTime := time.Since(startTime)
+	fmt.Printf("Parsing took: %dms\n", int64(executionTime.Nanoseconds()/1000000))
 }
 
 func isPrimaryLine(line string) bool {
