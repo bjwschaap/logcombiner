@@ -1,0 +1,30 @@
+{"log":"[2016-11-01T14:25:03,968][INFO ][o.e.n.Node               ] [sou246] starting ...\n","stream":"stdout","time":"2016-11-01T14:25:03.968170982Z"}
+{"log":"[2016-11-01T14:25:04,075][INFO ][o.e.t.TransportService   ] [sou246] publish_address {10.103.9.218:9300}, bound_addresses {0.0.0.0:9300}\n","stream":"stdout","time":"2016-11-01T14:25:04.076025184Z"}
+{"log":"[2016-11-01T14:25:04,079][INFO ][o.e.b.BootstrapCheck     ] [sou246] bound or publishing to a non-loopback or non-link-local address, enforcing bootstrap checks\n","stream":"stdout","time":"2016-11-01T14:25:04.079551948Z"}
+{"log":"[2016-11-01T14:25:07,117][WARN ][o.e.d.z.p.u.UnicastZenPing] [sou246] [1] failed send ping to {#zen_unicast_1#}{-YgF4SqQTwmAH1nsw5tk7Q}{10.103.118.33}{10.103.118.33:9300}\n","stream":"stdout","time":"2016-11-01T14:25:07.118075426Z"}
+{"log":"java.lang.IllegalStateException: handshake failed with {#zen_unicast_1#}{-YgF4SqQTwmAH1nsw5tk7Q}{10.103.118.33}{10.103.118.33:9300}\n","stream":"stdout","time":"2016-11-01T14:25:07.118108998Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService.handshake(TransportService.java:364) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.11812237Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService.connectToNodeLightAndHandshake(TransportService.java:339) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118125834Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService.connectToNodeLightAndHandshake(TransportService.java:313) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118128557Z"}
+{"log":"\u0009at org.elasticsearch.discovery.zen.ping.unicast.UnicastZenPing$2.run(UnicastZenPing.java:419) [elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118131179Z"}
+{"log":"\u0009at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:444) [elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118135491Z"}
+{"log":"\u0009at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_102]\n","stream":"stdout","time":"2016-11-01T14:25:07.118138414Z"}
+{"log":"\u0009at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_102]\n","stream":"stdout","time":"2016-11-01T14:25:07.118140956Z"}
+{"log":"\u0009at java.lang.Thread.run(Thread.java:745) [?:1.8.0_102]\n","stream":"stdout","time":"2016-11-01T14:25:07.118143476Z"}
+{"log":"Caused by: org.elasticsearch.transport.ReceiveTimeoutTransportException: [][10.103.118.33:9300][internal:transport/handshake] request_id [2] timed out after [3002ms]\n","stream":"stdout","time":"2016-11-01T14:25:07.118146394Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService$TimeoutHandler.run(TransportService.java:840) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118149126Z"}
+{"log":"\u0009... 4 more\n","stream":"stdout","time":"2016-11-01T14:25:07.118151838Z"}
+{"log":"[2016-11-01T14:25:07,113][WARN ][o.e.d.z.p.u.UnicastZenPing] [sou246] [1] failed send ping to {#zen_unicast_3#}{byz04LLQRhiEp_--xBmzGg}{10.103.119.13}{10.103.119.13:9300}\n","stream":"stdout","time":"2016-11-01T14:25:07.118274781Z"}
+{"log":"java.lang.IllegalStateException: handshake failed with {#zen_unicast_3#}{byz04LLQRhiEp_--xBmzGg}{10.103.119.13}{10.103.119.13:9300}\n","stream":"stdout","time":"2016-11-01T14:25:07.118280971Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService.handshake(TransportService.java:364) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.11828368Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService.connectToNodeLightAndHandshake(TransportService.java:339) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118286354Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService.connectToNodeLightAndHandshake(TransportService.java:313) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118288933Z"}
+{"log":"\u0009at org.elasticsearch.discovery.zen.ping.unicast.UnicastZenPing$2.run(UnicastZenPing.java:419) [elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118291569Z"}
+{"log":"\u0009at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:444) [elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.11829438Z"}
+{"log":"\u0009at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_102]\n","stream":"stdout","time":"2016-11-01T14:25:07.118297055Z"}
+{"log":"\u0009at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_102]\n","stream":"stdout","time":"2016-11-01T14:25:07.118299588Z"}
+{"log":"\u0009at java.lang.Thread.run(Thread.java:745) [?:1.8.0_102]\n","stream":"stdout","time":"2016-11-01T14:25:07.118302089Z"}
+{"log":"Caused by: org.elasticsearch.transport.ReceiveTimeoutTransportException: [][10.103.119.13:9300][internal:transport/handshake] request_id [1] timed out after [3000ms]\n","stream":"stdout","time":"2016-11-01T14:25:07.118309467Z"}
+{"log":"\u0009at org.elasticsearch.transport.TransportService$TimeoutHandler.run(TransportService.java:840) ~[elasticsearch-5.0.0.jar:5.0.0]\n","stream":"stdout","time":"2016-11-01T14:25:07.118312256Z"}
+{"log":"\u0009... 4 more\n","stream":"stdout","time":"2016-11-01T14:25:07.118314804Z"}
+{"log":"[2016-11-01T14:25:07,120][WARN ][o.e.d.z.p.u.UnicastZenPing] [sou246] [1] failed send ping to {#zen_unicast_2#}{2QxZ1UIYRiqF9o-emT7E1A}{10.103.118.96}{10.103.118.96:9300}\n","stream":"stdout","time":"2016-11-01T14:25:07.121466565Z"}
