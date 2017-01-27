@@ -1,0 +1,6 @@
+hash: 7ccbda7e2b422d9b84ea01d28c6a6269efa78fa6e2bf4b3d96791cc6d8fd1250
+updated: 2017-01-27T23:14:25.826734436+01:00
+imports:
+- name: github.com/oleiade/lane
+  version: 28f7c3f09254f12b51e620fa4db136ba58804762
+testImports: []

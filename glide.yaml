@@ -1,0 +1,4 @@
+package: github.com/bjwschaap/logcombiner
+import:
+- package: github.com/oleiade/lane
+  version: ^1.0.0
