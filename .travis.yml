@@ -1,8 +1,20 @@
 language: go
 go:
-  - 1.7
+- 1.7
 install:
-  - go get -v github.com/Masterminds/glide
-  - make deps
+- go get -v github.com/Masterminds/glide
+- make deps
 before_deploy:
-  - make release
+- make release
+deploy:
+  provider: releases
+  api_key:
+    secure: TqzWcwFFwUMO8j2Ie44/BLvbk71z9IrYrqO4nv7nwIlOinszqT6tzFBGWV6xnuxVXNLxMe3wcCarQEi+Tb04X3dwfYzXv5NHM/Ky+V5y5NF9ez3gn6A3iNh6xfsGAbHIqrqZ/sdXLrZOi1wpiwhLcLcA7y7goax8zxV/MZ6Uiou1ODeNWx41Tc83Mv0/M0mSjm2vrOp1zfz+Tp5LBtTM+o7fg4VxpHZcxLnvseYVLiosr/i2TQ6GO6AOjr7tzDPgT5yZQKpWxksjX1GFdmjWGTwFi1WLu8zCj8fRWAGxEejsdAFMnu2zC16Y4vOkVlxOQb8I5f1JzdYA1F+TDFUKo3hCyu4RDH3zCpWx7k1GdyTPydQedaeUiTi+7aDjkZMQX8tGRXdYKxYLT1Vmpa5z+up2pPuGixdFawT4A7ROq5Gk23wD6csqDbGP2OK2OgS8ZtFJ4x/QO1KzbpSr61wuQaQSygvr0nHWsnVCo459wfIc0LDtU3JFr3jPtIPYaRe8q1sLFvsBHeR8RJU0GvEZC5ZP47FJKe2gGX1psoUH4OfuWceyjX4usxAFLfg/J153gLlvuv9+wVKzCz42NQIht25hxLz6/hZDO6fPd5/FBCRT1xO1rwjCNXpOFyTAjBnGqzVxMy4/PvbLhIT5u7P5MNDvDdeUB13YIQ+Y9DBqmpU=
+  file:
+  - release/logcombiner-linux-x64
+  - release/logcombiner-linux-386
+  - release/logcombiner-linux-arm
+  - release/logcombiner-osx-x64
+  on:
+    repo: bjwschaap/logcombiner
+    tags: true
