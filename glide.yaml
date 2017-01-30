@@ -2,3 +2,5 @@ package: github.com/bjwschaap/logcombiner
 import:
 - package: github.com/oleiade/lane
   version: ^1.0.0
+- package: github.com/urfave/cli
+  version: ^1.19.1

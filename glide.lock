@@ -1,6 +1,8 @@
-hash: 7ccbda7e2b422d9b84ea01d28c6a6269efa78fa6e2bf4b3d96791cc6d8fd1250
-updated: 2017-01-27T23:14:25.826734436+01:00
+hash: 02f0f538981f9f429fd15cb716177b8b000213aea5240f6c5f5a03aaccfbdf29
+updated: 2017-01-30T09:09:08.887601481+01:00
 imports:
 - name: github.com/oleiade/lane
   version: 28f7c3f09254f12b51e620fa4db136ba58804762
+- name: github.com/urfave/cli
+  version: 0bdeddeeb0f650497d603c4ad7b20cfe685682f6
 testImports: []
