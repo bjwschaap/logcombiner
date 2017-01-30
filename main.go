@@ -1,77 +1,48 @@
 package main
 
 import (
-	"bufio"
-	"bytes"
-	"encoding/json"
-	"fmt"
 	"log"
 	"os"
-	"regexp"
-	"time"
 
-	"github.com/oleiade/lane"
+	"github.com/bjwschaap/logcombiner/combiner"
+	"github.com/urfave/cli"
 )
 
-// LogLine defines a single json log event
-type LogLine struct {
-	Time   string `json:"time"`
-	Log    string `json:"log"`
-	Stream string `json:"stream"`
-}
-
-var timeStampRegex = regexp.MustCompile(`^\[\d{4}-\d{1,2}-\d{1,2}.*\]`)
-
 func main() {
-	startTime := time.Now()
-	logFile, err := os.Open("./docker_log_json_stacktrace.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	scanner := bufio.NewScanner(logFile)
-	buffer := lane.NewQueue()
-	for scanner.Scan() {
-		line := scanner.Text()
-		var logLine LogLine
-		err := json.Unmarshal([]byte(line), &logLine)
-		if err != nil {
-			log.Fatal(err)
-		}
-		if isPrimaryLine(logLine.Log) && buffer.Size() > 0 {
-			// flush out buffer to single new event
-			newLogEvent, err := json.Marshal(flush(buffer))
-			if err != nil {
-				log.Fatal(err)
-			}
-			fmt.Println(string(newLogEvent))
-		}
-		buffer.Enqueue(logLine)
-	}
-	if buffer.Size() > 0 {
-		newLogEvent, err := json.Marshal(flush(buffer))
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(string(newLogEvent))
-	}
-	executionTime := time.Since(startTime)
-	fmt.Printf("Parsing took: %dms\n", int64(executionTime.Nanoseconds()/1000000))
-}
+	log.SetOutput(os.Stdout)
 
-func isPrimaryLine(line string) bool {
-	if timeStampRegex.FindString(line) != "" {
-		return true
-	}
-	return false
-}
+	app := cli.NewApp()
+	app.Name = "logcombiner"
+	app.Usage = "Simple utility program to combine multiline JSON log-events into single line JSON log-events"
+	app.Version = "0.1.0"
+	app.Copyright = "(C)2017 Capgemini - PLP"
+	app.Author = "Bastiaan Schaap"
+	app.Email = "plp.nl@capgemini.com"
+	app.UsageText = `E.g.: ./logcombiner -l mylog.txt -r '^[\\d{4'
+		Specify the file to be parsed by using --logfile or -l. Optionally pass in
+		--regex or -r to specify a regular expression to be used for detecting the
+		first line of a multiline log event.`
 
-func flush(buffer *lane.Queue) *LogLine {
-	var stringBuffer bytes.Buffer
-	time := buffer.Head().(LogLine).Time
-	stream := buffer.Head().(LogLine).Stream
-	for buffer.Head() != nil {
-		logLine := buffer.Dequeue().(LogLine)
-		stringBuffer.WriteString(logLine.Log)
+	// Define the configuration flags the program can/should use
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:   "logfile,l",
+			Usage:  "Path (relative or absolute) to the `LOGFILE` to be parsed",
+			EnvVar: "PARSE_LOG_FILE",
+		},
+		cli.StringFlag{
+			Name:   "regex,r",
+			Value:  `^\[\d{4}-\d{1,2}-\d{1,2}.*\]`,
+			Usage:  "`REGEX` to use for detecting a new log event",
+			EnvVar: "PARSE_REGEX",
+		},
 	}
-	return &LogLine{Time: time, Stream: stream, Log: stringBuffer.String()}
+
+	// Set the main program logic
+	app.Action = func(c *cli.Context) error {
+		return combiner.Start(c)
+	}
+
+	// Now start doing stuff
+	app.Run(os.Args)
 }
